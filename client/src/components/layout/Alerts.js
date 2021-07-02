@@ -10,7 +10,8 @@ const Alerts = () => {
     alertContext.alerts.length > 0 &&
     alertContext.alerts.map(alert => (
       <div key={alert.id} className={`alert alert-${alert.type}`}>
-        <FontAwesomeIcon icon={faInfoCircle} /> {alert.msg}
+        <FontAwesomeIcon icon={faInfoCircle} />
+        {alert.msg}
       </div>
     ))
   );

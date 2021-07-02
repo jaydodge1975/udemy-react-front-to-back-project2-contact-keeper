@@ -18,9 +18,9 @@ const Register = () => {
   const onChange = e => setUser({ ...user, [e.target.name]: e.target.value });
 
   const onSubmit = e => {
-    e.prevent.default();
+    e.preventDefault();
     if (name === '' || email === '' || password === '') {
-      setAlert('Please enter all fields', 'danger');
+      setAlert('Please fill out all fields', 'danger');
     } else if (password !== password2) {
       setAlert('Passwords do not match', 'danger');
     } else {
@@ -42,6 +42,7 @@ const Register = () => {
             value={name}
             onChange={onChange}
             autoComplete='off'
+            // required
           />
         </div>
         <div className='form-group'>
@@ -52,6 +53,7 @@ const Register = () => {
             value={email}
             onChange={onChange}
             autoComplete='off'
+            // required
           />
         </div>
         <div className='form-group'>
@@ -62,6 +64,8 @@ const Register = () => {
             value={password}
             onChange={onChange}
             autoComplete='off'
+            minLength='6'
+            // required
           />
         </div>
         <div className='form-group'>
@@ -72,6 +76,8 @@ const Register = () => {
             value={password2}
             onChange={onChange}
             autoComplete='off'
+            minLength='6'
+            // required
           />
         </div>
         <input
