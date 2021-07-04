@@ -1,6 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
 import ContactContext from '../../context/contact/contactContext';
-
 const ContactForm = () => {
   const contactContext = useContext(ContactContext);
 
@@ -58,6 +57,7 @@ const ContactForm = () => {
         onChange={onChange}
         autoComplete='off'
       />
+
       <input
         type='email'
         placeholder='Email'

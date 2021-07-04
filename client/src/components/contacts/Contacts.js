@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-// import { motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import ContactItem from './ContactItem';
 import ContactContext from '../../context/contact/contactContext';
 
@@ -7,8 +7,6 @@ const Contacts = () => {
   const contactContext = useContext(ContactContext);
 
   const { contacts, filtered } = contactContext;
-
-  // const nodeRef = useRef(null);
 
   if (contacts.length === 0) {
     return <h4>Please add a contact</h4>;
@@ -22,26 +20,26 @@ const Contacts = () => {
     <div className='my-1'>
       {filtered !== null
         ? filtered.map(contact => (
-            // <motion.div
-            //   key={contact._id}
-            //   layout
-            //   initial={{ opacity: 0 }}
-            //   animate={{ opacity: 1 }}
-            //   transition={{ delay: 0.2 }}
-            // >
-            <ContactItem contact={contact} />
-            // </motion.div>
+            <motion.div
+              key={contact.id}
+              layout
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2 }}
+            >
+              <ContactItem key={contact.id} contact={contact} />
+            </motion.div>
           ))
         : contacts.map(contact => (
-            // <motion.div
-            //   key={contact._id}
-            //   layout
-            //   initial={{ opacity: 0 }}
-            //   animate={{ opacity: 1 }}
-            //   transition={{ delay: 0.2 }}
-            // >
-            <ContactItem contact={contact} />
-            // </motion.div>
+            <motion.div
+              key={contact.id}
+              layout
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2 }}
+            >
+              <ContactItem key={contact.id} contact={contact} />
+            </motion.div>
           ))}
     </div>
 

@@ -9,7 +9,7 @@
   --medium-color: #54575a;
   --light-color: #f4f4f4;
   --light-secondary-color: #8dbcef;
-  --danger-color: #dc3545;
+  --danger-color: #c06872;
   --success-color: #28a745;
 }
 
@@ -246,6 +246,7 @@ img {
 .alert {
   padding: 0.7rem;
   margin: 1rem 0;
+  font-size: 1.8rem;
   opacity: 0.9;
   background: var(--light-color);
   color: #333;
