@@ -25,7 +25,7 @@ const Contacts = () => {
               layout
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
+              transition={{ duration: 1 }}
             >
               <ContactItem key={contact.id} contact={contact} />
             </motion.div>
@@ -36,7 +36,7 @@ const Contacts = () => {
               layout
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
+              transition={{ duration: 1 }}
             >
               <ContactItem key={contact.id} contact={contact} />
             </motion.div>
