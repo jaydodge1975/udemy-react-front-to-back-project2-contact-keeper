@@ -1,32 +1,77 @@
-import React from 'react';
+import React, { Fragment, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import AuthContext from '../../context/auth/authContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAddressCard } from '@fortawesome/free-solid-svg-icons';
+import {
+  faAddressCard,
+  faUserCircle,
+  faUserPlus,
+  faSignInAlt,
+  faSignOutAlt,
+  faQuestionCircle,
+} from '@fortawesome/free-solid-svg-icons';
 
 const Navbar = ({ title }) => {
+  const authContext = useContext(AuthContext);
+
+  const { isAuthenticated, logout, user } = authContext;
+
+  const onLogout = () => {
+    logout();
+  };
+
+  const authLinks = (
+    <Fragment>
+      <li>
+        <FontAwesomeIcon icon={faUserCircle} /> {user && user.name}
+      </li>
+      <li>
+        <a onClick={onLogout} href='#!'>
+          <span className='hide-sm'>
+            <FontAwesomeIcon icon={faSignOutAlt} /> Logout
+          </span>
+        </a>
+      </li>
+      <li>
+        <Link to='/about'>
+          <FontAwesomeIcon icon={faQuestionCircle} /> About
+        </Link>
+      </li>
+    </Fragment>
+  );
+
+  const guestLinks = (
+    <Fragment>
+      <li>
+        <Link to='/login'>
+          <FontAwesomeIcon icon={faSignInAlt} /> Login
+        </Link>
+      </li>
+      <li>
+        <Link to='/register'>
+          <FontAwesomeIcon icon={faUserPlus} /> Register
+        </Link>
+      </li>
+      <li>
+        <Link to='/about'>
+          <FontAwesomeIcon icon={faQuestionCircle} /> About
+        </Link>
+      </li>
+    </Fragment>
+  );
+
   return (
     <div className='navbar bg-primary'>
       <h1>
-        <span className='text-secondary-bright'>
-          <FontAwesomeIcon icon={faAddressCard} />
-        </span>{' '}
-        {title}
+        <Link to='/'>
+          <span className='text-secondary-bright'>
+            <FontAwesomeIcon icon={faAddressCard} />
+          </span>{' '}
+          {title}
+        </Link>
       </h1>
-      <ul>
-        <li>
-          <Link to='/'>Home</Link>
-        </li>
-        <li>
-          <Link to='/about'>About</Link>
-        </li>
-        <li>
-          <Link to='/register'>Register</Link>
-        </li>
-        <li>
-          <Link to='/login'>Login</Link>
-        </li>
-      </ul>
+      <ul>{isAuthenticated ? authLinks : guestLinks}</ul>
     </div>
   );
 };
